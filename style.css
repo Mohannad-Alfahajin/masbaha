@@ -1,4 +1,3 @@
-/* 1. الأساسيات - ستايل عام لجميع الأجهزة */
 body {
   font-family: 'Arial', sans-serif;
   background-color: #f0f8f5;
@@ -13,9 +12,9 @@ body {
   background: white;
   padding: 30px;
   border-radius: 16px;
-  max-width: 100%; /* لتغيير العرض حسب حجم الشاشة */
-  width: 90%; /* إضافة المسافة بين الحواف */
-  margin: auto;
+  max-width: 100%;
+  width: 90%;
+  margin: 0 auto; /* هذا سيضمن أن الحاوية في المنتصف دائمًا */
   box-shadow: 0 0 20px rgba(128, 0, 128, 0.2);
   border: 2px solid #8e44ad;
 }
@@ -31,7 +30,6 @@ h1 {
   color: #27ae60;
 }
 
-/* 2. ستايل الأزرار */
 button {
   margin: 10px;
   padding: 12px 24px;
@@ -42,15 +40,14 @@ button {
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  width: 80%; /* جعل الأزرار تأخذ مساحة أكبر */
-  max-width: 300px; /* الحد الأقصى لعرض الأزرار */
+  width: 80%;
+  max-width: 300px;
 }
 
 button:hover {
   background-color: #732d91;
 }
 
-/* 3. ستايل القوائم المنسدلة */
 select {
   font-size: 16px;
   padding: 8px;
@@ -61,7 +58,6 @@ select {
   max-width: 300px;
 }
 
-/* 4. ستايل النص الحالي */
 #currentZekr {
   font-size: 18px;
   margin-top: 10px;
@@ -69,45 +65,44 @@ select {
   color: #34495e;
 }
 
-/* 5. إضافة Media Queries لتكييف التصميم مع الأجهزة المختلفة */
-
 /* 5.1. الهواتف المحمولة */
 @media only screen and (max-width: 599px) {
   body {
-    font-size: 14px; /* تصغير حجم الخط */
-    padding: 20px; /* تقليل المسافة حول النص */
+    font-size: 14px;
+    padding: 20px;
   }
 
   .container {
     padding: 20px;
     width: 95%;
-    max-width: 100%; /* عرض حاوية أكبر على الهواتف */
+    margin: 0 auto; /* ضمان أن الحاوية في المنتصف على الهاتف */
   }
 
   .counter {
-    font-size: 48px; /* تصغير حجم العدادات */
+    font-size: 48px;
   }
 
   button {
     padding: 10px 20px;
-    font-size: 16px; /* تصغير حجم الخط في الأزرار */
+    font-size: 16px;
   }
 
   select {
-    width: 90%; /* جعل القائمة تأخذ عرض أكبر */
+    width: 90%;
   }
 }
 
-/* 5.2. الأجهزة اللوحية (تابلت) */
+/* 5.2. الأجهزة اللوحية */
 @media only screen and (min-width: 600px) and (max-width: 1024px) {
   body {
-    font-size: 16px; /* حجم مناسب للأجهزة اللوحية */
+    font-size: 16px;
     padding: 30px;
   }
 
   .container {
-    width: 80%; /* جعل الحاوية تأخذ 80% من العرض */
+    width: 80%;
     padding: 25px;
+    margin: 0 auto; /* التأكد من أن الحاوية في المنتصف */
   }
 
   .counter {
@@ -127,13 +122,14 @@ select {
 /* 5.3. أجهزة الكمبيوتر واللابتوب */
 @media only screen and (min-width: 1025px) {
   body {
-    font-size: 18px; /* حجم خط أكبر للأجهزة الكبيرة */
+    font-size: 18px;
     padding: 40px;
   }
 
   .container {
-    width: 60%; /* جعل الحاوية تأخذ 60% من العرض */
+    width: 60%;
     padding: 30px;
+    margin: 0 auto; /* تأكيد تموضع الحاوية في المنتصف */
   }
 
   .counter {
