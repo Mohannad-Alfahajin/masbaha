@@ -1,0 +1,6 @@
+# robots.txt for Mohannad's Electronic Masbaha Website
+
+User-agent: *
+Allow: /
+
+Sitemap: https://mohannad-alfahajin.github.io/masbaha/sitemap.xml
