@@ -1,148 +1,119 @@
+/* إعدادات أساسية */
 body {
   font-family: 'Arial', sans-serif;
   background-color: #f0f8f5;
   text-align: center;
-  padding: 40px;
+  padding: 5vw; /* استخدمنا vw بدل px لمرونة الحجم */
   direction: rtl;
   color: #333;
-  margin: 0;
 }
 
+/* الحاوية الرئيسية */
 .container {
   background: white;
-  padding: 30px;
-  border-radius: 16px;
-  max-width: 100%;
-  width: 90%;
-  margin: 0 auto; /* هذا سيضمن أن الحاوية في المنتصف دائمًا */
+  padding: 5vh;
+  border-radius: 2vw;
+  max-width: 90%; /* يتناسب مع 90% من الشاشة */
+  margin: 0 auto;
   box-shadow: 0 0 20px rgba(128, 0, 128, 0.2);
   border: 2px solid #8e44ad;
 }
 
+/* العناوين */
 h1 {
   color: #8e44ad;
-  margin-bottom: 20px;
+  margin-bottom: 2vh;
+  font-size: 4vw; /* حجم الخط يعتمد على عرض الشاشة */
 }
 
+/* العدّاد */
 .counter {
-  font-size: 64px;
-  margin: 20px 0;
+  font-size: 8vw; /* حجم أكبر على الشاشات الصغيرة */
+  margin: 2vh 0;
   color: #27ae60;
 }
 
+/* الأزرار */
 button {
-  margin: 10px;
-  padding: 12px 24px;
-  font-size: 18px;
+  margin: 2vh;
+  padding: 4vw 8vw; /* قمنا بزيادة العرض والارتفاع ليناسب العرض */
+  font-size: 2vw;
   border: none;
   border-radius: 10px;
   background-color: #8e44ad;
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  width: 80%;
-  max-width: 300px;
 }
 
+/* تعديلات عند التحويم */
 button:hover {
   background-color: #732d91;
 }
 
+/* قائمة الاذكار */
 select {
-  font-size: 16px;
-  padding: 8px;
+  font-size: 2.5vw;
+  padding: 2vw;
   border-radius: 6px;
   border: 1px solid #ccc;
-  margin-bottom: 10px;
-  width: 80%;
-  max-width: 300px;
+  margin-bottom: 2vh;
 }
 
+/* الذكر الحالي */
 #currentZekr {
-  font-size: 18px;
-  margin-top: 10px;
+  font-size: 2vw;
+  margin-top: 2vh;
   font-weight: bold;
   color: #34495e;
 }
 
-/* 5.1. الهواتف المحمولة */
-@media only screen and (max-width: 599px) {
-  body {
-    font-size: 14px;
-    padding: 20px;
-  }
-
+/* لجعل التنسيق متوافق مع الأجهزة الصغيرة: الهواتف والتابلت */
+@media only screen and (max-width: 600px) {
   .container {
-    padding: 20px;
+    padding: 4vh;
     width: 95%;
-    margin: 0 auto; /* ضمان أن الحاوية في المنتصف على الهاتف */
+  }
+
+  h1 {
+    font-size: 6vw; /* خط أكبر على الهواتف */
   }
 
   .counter {
-    font-size: 48px;
+    font-size: 10vw; /* العدّاد أكبر على الهواتف */
   }
 
   button {
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 5vw 10vw;
+    font-size: 3vw;
   }
 
   select {
-    width: 90%;
+    font-size: 4vw;
   }
 }
 
-/* 5.2. الأجهزة اللوحية */
-@media only screen and (min-width: 600px) and (max-width: 1024px) {
-  body {
-    font-size: 16px;
-    padding: 30px;
-  }
-
+/* لجعل التنسيق متوافق مع الأجهزة الأكبر: اللابتوبات، الأجهزة اللوحية */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
   .container {
+    padding: 4vh;
     width: 80%;
-    padding: 25px;
-    margin: 0 auto; /* التأكد من أن الحاوية في المنتصف */
+  }
+
+  h1 {
+    font-size: 5vw;
   }
 
   .counter {
-    font-size: 56px;
+    font-size: 6vw;
   }
 
   button {
-    padding: 12px 24px;
-    font-size: 18px;
+    padding: 4vw 6vw;
+    font-size: 2.5vw;
   }
 
   select {
-    width: 85%;
-  }
-}
-
-/* 5.3. أجهزة الكمبيوتر واللابتوب */
-@media only screen and (min-width: 1025px) {
-  body {
-    font-size: 18px;
-    padding: 40px;
-  }
-
-  .container {
-    width: 60%;
-    padding: 30px;
-    margin: 0 auto; /* تأكيد تموضع الحاوية في المنتصف */
-  }
-
-  .counter {
-    font-size: 64px;
-  }
-
-  button {
-    padding: 14px 28px;
-    font-size: 20px;
-    width: 70%;
-  }
-
-  select {
-    width: 70%;
+    font-size: 3vw;
   }
 }
