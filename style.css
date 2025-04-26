@@ -1,42 +1,54 @@
 
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #f5f5dc;
+  background-color: #f0f8f5;
   text-align: center;
   padding: 40px;
   direction: rtl;
+  color: #333;
 }
 .container {
   background: white;
-  padding: 20px;
-  border-radius: 12px;
-  max-width: 400px;
+  padding: 30px;
+  border-radius: 16px;
+  max-width: 500px;
   margin: auto;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 20px rgba(128, 0, 128, 0.2);
+  border: 2px solid #8e44ad;
 }
 h1 {
-  color: #4b3f2f;
+  color: #8e44ad;
+  margin-bottom: 20px;
 }
 .counter {
-  font-size: 60px;
+  font-size: 64px;
   margin: 20px 0;
-  color: #008080;
+  color: #27ae60;
 }
 button {
   margin: 10px;
-  padding: 10px 20px;
+  padding: 12px 24px;
   font-size: 18px;
   border: none;
-  border-radius: 8px;
-  background-color: #008080;
+  border-radius: 10px;
+  background-color: #8e44ad;
   color: white;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 button:hover {
-  background-color: #005f5f;
+  background-color: #732d91;
 }
 select {
   font-size: 16px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
   margin-bottom: 10px;
-  padding: 6px;
+}
+#currentZekr {
+  font-size: 18px;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #34495e;
 }
