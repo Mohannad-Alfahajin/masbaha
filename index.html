@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#8e44ad">
   <meta name="google-site-verification" content="google7b11d7c4d4aa0c0b.html" />
   <meta name="description" content="مسبحة إلكترونية مجانية للتسبيح والاستغفار وذكر الله أونلاين. عدّد تسبيحاتك بسهولة مع عداد التسبيح الذكي.">
   <meta name="keywords" content="مسبحة إلكترونية, عداد تسبيح, أذكار, استغفار, سبحان الله, ذكر الله, تطبيقات إسلامية">
@@ -10,13 +11,33 @@
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="مسبحة إلكترونية - عدّاد تسبيح إلكتروني">
   <meta property="og:description" content="استخدم المسبحة الإلكترونية للاستغفار والتسبيح أونلاين">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mohannad-alfahajin.github.io/masbaha/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="مسبحة إلكترونية">
+  <meta name="twitter:description" content="أداة مساعدة للذكر والاستغفار">
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
   
-  <!-- إضافة رابط السايت ماب هنا -->
   <link rel="sitemap" type="application/xml" title="Sitemap" href="https://mohannad-alfahajin.github.io/masbaha/sitemap.xml">
-  
-  <title>مسبحة إلكترونية | عداد تسبيح إلكتروني - ذكر الله</title>
+  <link rel="preload" href="style.css" as="style">
+  <link rel="preload" href="script.js" as="script">
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  
+  <title>مسبحة إلكترونية | عداد تسبيح إلكتروني - ذكر الله</title>
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "مسبحة إلكترونية",
+    "description": "أداة مساعدة للذكر والاستغفار",
+    "applicationCategory": "ReligiousApplication",
+    "operatingSystem": "Any"
+  }
+  </script>
 </head>
 <body>
   <div class="container">
@@ -27,8 +48,8 @@
     
     <main>
       <div class="zekr-section">
-        <label for="zekrSelect">اختر نوع الذكر:</label>
-        <select id="zekrSelect" aria-label="اختر نوع الذكر">
+        <label id="zekrLabel">اختر نوع الذكر:</label>
+        <select id="zekrSelect" aria-labelledby="zekrLabel">
           <option value="أستغفر الله">أستغفر الله</option>
           <option value="سبحان الله">سبحان الله</option>
           <option value="الحمد لله">الحمد لله</option>
@@ -60,9 +81,17 @@
   
   <script src="script.js" defer></script>
   
-  <!-- إضافة script لتحديث السنة تلقائيا -->
   <script>
     document.getElementById('current-year').textContent = new Date().getFullYear();
+    
+    // تسجيل Service Worker
+    if('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(reg => console.log('Service Worker registered'))
+          .catch(err => console.log('Service Worker registration failed: ', err));
+      });
+    }
   </script>
 </body>
 </html>
