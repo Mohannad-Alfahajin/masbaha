@@ -10,6 +10,10 @@
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="مسبحة إلكترونية - عدّاد تسبيح إلكتروني">
   <meta property="og:description" content="استخدم المسبحة الإلكترونية للاستغفار والتسبيح أونلاين">
+  
+  <!-- إضافة رابط السايت ماب هنا -->
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://mohannad-alfahajin.github.io/masbaha/sitemap.xml">
+  
   <title>مسبحة إلكترونية | عداد تسبيح إلكتروني - ذكر الله</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -50,10 +54,15 @@
     </main>
     
     <footer>
-      <p>© 2023 مسبحة إلكترونية - جميع الحقوق محفوظة</p>
+      <p>© <span id="current-year">2023</span> مسبحة إلكترونية - جميع الحقوق محفوظة</p>
     </footer>
   </div>
   
   <script src="script.js" defer></script>
+  
+  <!-- إضافة script لتحديث السنة تلقائيا -->
+  <script>
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
