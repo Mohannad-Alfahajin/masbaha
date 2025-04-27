@@ -2,5 +2,7 @@
 
 User-agent: *
 Allow: /
-
+Disallow: /private/
+Crawl-delay: 1
+Host: mohannad-alfahajin.github.io
 Sitemap: https://mohannad-alfahajin.github.io/masbaha/sitemap.xml
