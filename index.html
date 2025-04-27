@@ -1,35 +1,59 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="google-site-verification" content="google7b11d7c4d4aa0c0b.html" />
-  <meta name="description" content="مسبحة إلكترونية مجانية للتسبيح والاستغفار وذكر الله أونلاين بسهولة وسرعة. استخدم المسبحة الإلكترونية أينما كنت.">
-  <meta name="keywords" content="مسبحة إلكترونية, مسبحة اونلاين, مسبحة استغفار, تسبيح الكتروني, عداد تسبيح, مسبحة للهاتف, أذكار الصباح, أذكار المساء, ذكر الله, استغفار">
+  <meta name="google-site-verification" content="google7b11d7c4d4aa0c0b.html" />
+  <meta name="description" content="مسبحة إلكترونية مجانية للتسبيح والاستغفار وذكر الله أونلاين. عدّد تسبيحاتك بسهولة مع عداد التسبيح الذكي.">
+  <meta name="keywords" content="مسبحة إلكترونية, عداد تسبيح, أذكار, استغفار, سبحان الله, ذكر الله, تطبيقات إسلامية">
   <meta name="author" content="مهند الفحّاجين">
   <meta name="robots" content="index, follow">
-  <title>مسبحة إلكترونية - مسبحة أونلاين للاستغفار والتسبيح</title>
+  <meta property="og:title" content="مسبحة إلكترونية - عدّاد تسبيح إلكتروني">
+  <meta property="og:description" content="استخدم المسبحة الإلكترونية للاستغفار والتسبيح أونلاين">
+  <title>مسبحة إلكترونية | عداد تسبيح إلكتروني - ذكر الله</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
   <div class="container">
-    <h1>مسبحة إلكترونية</h1>
-    <select id="zekrSelect">
-      <option value="أستغفر الله">أستغفر الله</option>
-      <option value="سبحان الله">سبحان الله</option>
-      <option value="الحمد لله">الحمد لله</option>
-      <option value="لا إله إلا الله">لا إله إلا الله</option>
-      <option value="الله أكبر">الله أكبر</option>
-      <option value="لا حول ولا قوة إلا بالله">لا حول ولا قوة إلا بالله</option>
-      <option value="سبحان الله وبحمده، سبحان الله العظيم">سبحان الله وبحمده، سبحان الله العظيم</option>
-      <option value="لا إله إلا الله وحده لا شريك له، له الملك وله الحمد، وهو على كل شيء قدير">لا إله إلا الله وحده لا شريك له، له الملك وله الحمد، وهو على كل شيء قدير</option>
-    </select>
-    <p id="currentZekr">الذكر الحالي: أستغفر الله</p>
-    <div class="counter" id="counter">0</div>
-    <button onclick="increment()">تسبيح</button>
-    <button onclick="resetCounter()">تصفير</button>
+    <header>
+      <h1>مسبحة إلكترونية</h1>
+      <p class="subtitle">أداة مساعدة للذكر والاستغفار</p>
+    </header>
+    
+    <main>
+      <div class="zekr-section">
+        <label for="zekrSelect">اختر نوع الذكر:</label>
+        <select id="zekrSelect" aria-label="اختر نوع الذكر">
+          <option value="أستغفر الله">أستغفر الله</option>
+          <option value="سبحان الله">سبحان الله</option>
+          <option value="الحمد لله">الحمد لله</option>
+          <option value="لا إله إلا الله">لا إله إلا الله</option>
+          <option value="الله أكبر">الله أكبر</option>
+          <option value="لا حول ولا قوة إلا بالله">لا حول ولا قوة إلا بالله</option>
+          <option value="سبحان الله وبحمده، سبحان الله العظيم">سبحان الله وبحمده، سبحان الله العظيم</option>
+          <option value="لا إله إلا الله وحده لا شريك له، له الملك وله الحمد، وهو على كل شيء قدير">لا إله إلا الله وحده لا شريك له، له الملك وله الحمد، وهو على كل شيء قدير</option>
+        </select>
+        
+        <div id="currentZekr" class="current-zekr" aria-live="polite">الذكر الحالي: أستغفر الله</div>
+        
+        <div class="counter-container">
+          <div id="counter" class="counter" aria-live="polite">0</div>
+          <span class="counter-label">عدد التسبيحات</span>
+        </div>
+        
+        <div class="buttons">
+          <button onclick="increment()" class="btn-count" aria-label="زيادة العداد">تسبيح</button>
+          <button onclick="resetCounter()" class="btn-reset" aria-label="إعادة تعيين العداد">تصفير</button>
+        </div>
+      </div>
+    </main>
+    
+    <footer>
+      <p>© 2023 مسبحة إلكترونية - جميع الحقوق محفوظة</p>
+    </footer>
   </div>
-  <script src="script.js"></script>
+  
+  <script src="script.js" defer></script>
 </body>
 </html>
