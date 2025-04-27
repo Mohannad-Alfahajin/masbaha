@@ -5,23 +5,24 @@ const TasbeehApp = {
     counterDisplay: document.getElementById('counter'),
     zekrSelect: document.getElementById('zekrSelect'),
     currentZekr: document.getElementById('currentZekr'),
-    incrementBtn: document.querySelector('[onclick="increment()"]'),
-    resetBtn: document.querySelector('[onclick="resetCounter()"]')
+    incrementBtn: document.querySelector('.btn-count'),
+    resetBtn: document.querySelector('.btn-reset')
   },
 
   // حالة التطبيق
   state: {
     count: 0,
     currentZekr: 'أستغفر الله',
-    targetCount: 33 // يمكن تغييره حسب الحاجة
+    targetCount: 33,
+    lastUpdated: null
   },
 
   // تهيئة التطبيق
   init() {
     this.setupEventListeners();
+    this.loadFromLocalStorage();
     this.updateUI();
     this.setupKeyboardControls();
-    this.checkDarkMode();
   },
 
   // إعداد مستمعي الأحداث
@@ -29,8 +30,6 @@ const TasbeehApp = {
     this.elements.zekrSelect.addEventListener('change', () => this.handleZekrChange());
     this.elements.incrementBtn.addEventListener('click', () => this.increment());
     this.elements.resetBtn.addEventListener('click', () => this.resetCounter());
-    
-    // للشاشات التي تدعم اللمس
     this.elements.counterDisplay.addEventListener('click', () => this.increment());
   },
 
@@ -52,16 +51,17 @@ const TasbeehApp = {
     this.state.count = 0;
     this.updateUI();
     this.animateCounter('change');
+    this.saveToLocalStorage();
   },
 
   // زيادة العداد
   increment() {
     this.state.count++;
+    this.state.lastUpdated = new Date().toISOString();
     
-    // تأثيرات بصرية عند أرقام محددة
     if (this.state.count % this.state.targetCount === 0) {
       this.animateCounter('milestone');
-      this.playSound(); // يمكن إضافة صوت هنا
+      this.playSound();
     } else {
       this.animateCounter('increment');
     }
@@ -74,6 +74,7 @@ const TasbeehApp = {
   resetCounter() {
     if (this.state.count > 0 && confirm('هل تريد تصفير العداد؟')) {
       this.state.count = 0;
+      this.state.lastUpdated = new Date().toISOString();
       this.animateCounter('reset');
       this.updateUI();
       this.saveToLocalStorage();
@@ -84,13 +85,7 @@ const TasbeehApp = {
   updateUI() {
     this.elements.counterDisplay.textContent = this.state.count;
     this.elements.currentZekr.textContent = `الذكر الحالي: ${this.state.currentZekr}`;
-    
-    // تغيير اللون عند الوصول لعدد معين
-    if (this.state.count >= this.state.targetCount) {
-      this.elements.counterDisplay.style.color = '#e74c3c';
-    } else {
-      this.elements.counterDisplay.style.color = '#27ae60';
-    }
+    this.elements.counterDisplay.style.color = this.state.count >= this.state.targetCount ? '#e74c3c' : '#27ae60';
   },
 
   // تأثيرات حركية
@@ -130,34 +125,33 @@ const TasbeehApp = {
 
   // حفظ في الذاكرة المحلية
   saveToLocalStorage() {
-    localStorage.setItem('tasbeehCount', this.state.count);
-    localStorage.setItem('selectedZekr', this.state.currentZekr);
+    localStorage.setItem('tasbeehData', JSON.stringify({
+      count: this.state.count,
+      zekr: this.state.currentZekr,
+      lastUpdated: this.state.lastUpdated
+    }));
   },
 
   // تحميل من الذاكرة المحلية
   loadFromLocalStorage() {
-    const savedCount = localStorage.getItem('tasbeehCount');
-    const savedZekr = localStorage.getItem('selectedZekr');
-    
-    if (savedCount) this.state.count = parseInt(savedCount);
-    if (savedZekr) {
-      this.state.currentZekr = savedZekr;
-      this.elements.zekrSelect.value = savedZekr;
-    }
-  },
-
-  // دعم الوضع المظلم
-  checkDarkMode() {
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      document.body.classList.add('dark-mode');
+    const savedData = localStorage.getItem('tasbeehData');
+    if (savedData) {
+      try {
+        const data = JSON.parse(savedData);
+        this.state.count = data.count || 0;
+        this.state.currentZekr = data.zekr || 'أستغفر الله';
+        this.state.lastUpdated = data.lastUpdated;
+        this.elements.zekrSelect.value = this.state.currentZekr;
+      } catch (e) {
+        console.error('Error loading saved data:', e);
+      }
     }
   },
 
   // تشغيل صوت (اختياري)
   playSound() {
-    // يمكن إضافة صوت خفيف هنا
     const audio = new Audio('click-sound.mp3');
-    audio.volume = 0.3;
+    audio.volume = 0.2;
     audio.play().catch(e => console.log('لا يمكن تشغيل الصوت:', e));
   }
 };
@@ -165,16 +159,15 @@ const TasbeehApp = {
 // بدء التطبيق عند تحميل الصفحة
 document.addEventListener('DOMContentLoaded', () => {
   TasbeehApp.init();
-  TasbeehApp.loadFromLocalStorage();
+  
+  // إضافة أنيميشن للـ CSS ديناميكيًا
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+  `;
+  document.head.appendChild(style);
 });
-
-// إضافة أنيميشن للـ CSS ديناميكيًا
-const style = document.createElement('style');
-style.textContent = `
-  @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
-  }
-`;
-document.head.appendChild(style);
